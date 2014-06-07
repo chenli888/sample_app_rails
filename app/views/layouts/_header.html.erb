@@ -28,7 +28,7 @@
           <% if facebook_signed_in? %>
             <li>Signed in Facebook.</li>
           <% else %>
-            <li><%= link_to "Facebook Sign in", "/signin", id: "Facebook_Sign_in" %></li>
+            <li><%= link_to "Facebook Sign in", "/auth/facebook", id: "Facebook_Sign_in" %></li>
           <% end %>
         </ul>
       </nav>
