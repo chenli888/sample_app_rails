@@ -17,7 +17,7 @@ SampleApp::Application.routes.draw do
   match '/contact',  to: 'static_pages#contact', via: 'get'
   
   #match 'auth/:provider/callback', to: 'facebook_sessions#create', via: [:get, :post]
-  match 'auth/:provider/', to: 'facebook_sessions#create', via: [:get, :post]
+  match 'auth/:provider/', to: redirect('/'), via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match '/facebook_signout', to: 'facebook_sessions#destroy', as: 'facebook_signout', via: [:get, :post]
   
