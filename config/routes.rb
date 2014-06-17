@@ -10,17 +10,11 @@ SampleApp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   root 'static_pages#home'
   match '/signup',  to: 'users#new',  via: 'get'
-  match '/signin',  to: redirect('/'), via: 'get'
+  match '/signin',  to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/help',  to: 'static_pages#help',  via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact',  to: 'static_pages#contact', via: 'get'
-  
-  match 'auth/:provider/callback', to: 'facebook_sessions#create', via: [:get, :post]
-  match 'auth/:provider/', to: redirect('/'), via: [:get, :post]
-  match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  match '/facebook_signout', to: 'facebook_sessions#destroy', as: 'facebook_signout', via: [:get, :post]
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
