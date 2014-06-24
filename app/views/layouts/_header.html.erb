@@ -21,6 +21,11 @@
                 </li>
               </ul>
             </li>
+            <% if show_facebook_sign_in? %>
+              <li><%= link_to "Facebook Sign in", "/auth/facebook", id: "facebook_sign_in" %></li>
+	        <% else %>
+	          <li><%= link_to "Facebook Sign out", "/auth/facebook/logout", id: "facebook_sign_out" %></li>
+	        <% end %>
           <% else %>
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %>

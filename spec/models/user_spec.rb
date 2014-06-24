@@ -16,6 +16,7 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
   it { should respond_to(:microposts) }
@@ -26,6 +27,7 @@ describe User do
   it { should respond_to(:follow!) }
   it { should respond_to(:reverse_relationships) }
   it { should respond_to(:followers) }  
+  it { should respond_to(:facebook_token) }
   
   it {should be_valid }
   it { should_not be_admin }

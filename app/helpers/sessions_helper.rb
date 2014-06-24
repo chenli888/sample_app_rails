@@ -1,5 +1,19 @@
 module SessionsHelper
   
+  def show_facebook_sign_in?
+    if (!signed_in?)
+      return false
+    else
+      begin
+        if (current_user.facebook_token.blank?)
+          return true
+        else
+          return false
+        end
+      end
+    end
+  end
+  
   def sign_in(user)
     remember_token = User.new_remember_token
     cookies.permanent[:remember_token] = remember_token
@@ -45,5 +59,9 @@ module SessionsHelper
 
   def store_location
     session[:return_to] = request.url if request.get?
+  end
+  
+  def store_oauth(auth)
+    current_user.update_attribute(:facebook_token, auth.credentials.token)
   end
 end

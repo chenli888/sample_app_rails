@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  before_create :create_empty_facebook_token
   
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -43,5 +44,9 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
+    end
+    
+    def create_empty_facebook_token
+      self.facebook_token = ""
     end
 end
